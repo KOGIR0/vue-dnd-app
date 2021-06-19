@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="chosen-item">Chosen: {{ chosen }}</div>
-        <div class="monster" v-for="(item, index) in data" :key="index" v-on:click="() => {chosen = item.name}">
+        <div class="list-item" v-for="(item, index) in data" :key="index" v-on:click="getChosen(item)">
             {{ index }}) {{ item.name }}
         </div>
     </div>
@@ -18,6 +18,17 @@ export default {
             chosen: "",
         }
     },
+    methods: {
+        getChosen: function(item)
+        {
+            this.chosen = item.name;
+            fetch("https://www.dnd5eapi.co" + item.url)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+        }
+    },
     watch: {
         dataDefault: function(newVal, oldVal) {
             this.data = newVal;
@@ -27,7 +38,7 @@ export default {
 </script>
 
 <style>
-    .monster {
+    .list-item {
         color: white;
         background-color: darkolivegreen;
         width: 20%;
@@ -35,7 +46,7 @@ export default {
         padding: 5px;
     }
 
-    .monster:hover {
+    .list-item:hover {
         cursor: pointer;
     }
 
