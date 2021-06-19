@@ -2,7 +2,11 @@
     <div>
         <div id="row">
             <div id="list-column">
-                <div class="list-item" v-for="(item, index) in data" :key="index" v-on:click="getChosen(item)">
+                <div 
+                class="list-item" 
+                v-for="(item, index) in data" :key="index" 
+                v-on:click="getChosen(item)"
+                :style="[item.index === chosen.index ? { 'background': 'orange' } : 'null']">
                     {{ index }}) {{ item.name }}
                 </div>
             </div>
