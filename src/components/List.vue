@@ -11,10 +11,10 @@
                 </div>
             </div>
             <div class="chosen-item" v-if="chosen">
-                <div> Name: {{ chosen.name }} </div>
-                <div> Size: {{ chosen.size }} </div>
-                <div> Intelligence: {{ chosen.intelligence }} </div>
-                <div> Hit points: {{ chosen.hit_points }} </div>
+                <div id="name"> Name: {{ chosen.name }} </div>
+                <div id="size"> Size: {{ chosen.size }} </div>
+                <div id="intelligence"> Intelligence: {{ chosen.intelligence }} </div>
+                <div id="hit-points"> Hit points: {{ chosen.hit_points }} </div>
             </div>
         </div>
     </div>
@@ -57,9 +57,13 @@ export default {
 <style>
     .list-item {
         color: white;
-        background-color: darkolivegreen;
+        background-color: #00675C;
         margin: 5px;
         padding: 5px;
+    }
+
+    .chosen-item #name {
+        border-bottom: 2px solid black;
     }
 
     .list-item:hover {
@@ -76,6 +80,9 @@ export default {
         flex-direction: column;
         position: fixed;
         margin-left: 20%;
+        padding: 5px;
+        background-color: #5DCFC3;
+        border-radius: 5px;
     }
 
     #row {
