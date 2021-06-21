@@ -11,10 +11,14 @@
                 </div>
             </div>
             <div class="chosen-item" v-if="chosen">
-                <div id="name"> Name: {{ chosen.name }} </div>
-                <div id="size"> Size: {{ chosen.size }} </div>
-                <div id="intelligence"> Intelligence: {{ chosen.intelligence }} </div>
-                <div id="hit-points"> Hit points: {{ chosen.hit_points }} </div>
+                <div id="name"> {{ chosen.name }} </div>
+                <div id="size"><label>Size:</label> {{ chosen.size }} </div>
+                <div id="intelligence"><label>Intelligence:</label> {{ chosen.intelligence }} </div>
+                <div id="hit-points"><label>Hit points:</label> {{ chosen.hit_points }} </div>
+                <div id="type"><label>Type:</label> {{ chosen.type }} </div>
+                <div id="armor_class"><label>Armor class:</label> {{ chosen.armor_class }} </div>
+                <div id="wisdom"><label>Wisdom:</label> {{ chosen.wisdom }} </div>
+                <div id="xp"><label>XP:</label> {{ chosen.xp }} </div>
             </div>
         </div>
     </div>
@@ -37,6 +41,7 @@ export default {
             fetch("https://www.dnd5eapi.co" + item.url)
             .then((res) => res.json())
             .then((data) => {
+                console.log(data);
                 if(this.chosen.index === data.index)
                 {
                     this.chosen = '';
@@ -80,9 +85,16 @@ export default {
         flex-direction: column;
         position: fixed;
         margin-left: 20%;
+        width: 20%;
         padding: 5px;
         background-color: #5DCFC3;
         border-radius: 5px;
+    }
+
+    .chosen-item label {
+        color: #A64600;
+        display: inline-block;
+        width: 45%;
     }
 
     #row {
