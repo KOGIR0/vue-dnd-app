@@ -5,6 +5,7 @@
             <input type="radio" name="group1" value="spells"><label>Spells</label>
             <input type="radio" name="group1" value="classes"><label>Classes</label>
             <input type="radio" name="group1" value="features"><label>Features</label>
+            <input type="radio" name="group1" value="skills"><label>Skills</label>
             <button v-on:click="search">Search</button>
         </form>
         <div class="row">
@@ -32,7 +33,7 @@ export default {
         search(e){
             e.preventDefault();
             let chosenInputValue = '';
-            for(let i = 0; i < 4; i++)
+            for(let i = 0; i < 5; i++)
             {
                 if(this.$refs.form[i].checked === true)
                 {
@@ -78,13 +79,37 @@ export default {
                     this.chosenItemParam = monster;
                 },
                 'spells': (data) => {
-
+                    let spell = {
+                        'Name': data.name,
+                        'Area of effect': data.hasOwnProperty('area_of_effect') ? data.area_of_effect.type + ' ' + data.area_of_effect.size : '',
+                        'Casting time': data.casting_time,
+                        'Classes': data.classes.map((item) => item.name).join(','),
+                        'Components': data.components.join(','),
+                        'Concentration': data.concentration.toString(),
+                        'Desctription': data.desc.join('.'),
+                        'Duration': data.duration,
+                        'Level': data.level,
+                        'Material': data.material,
+                        'Range': data.range,
+                        'Ritual': data.ritual.toString(),
+                        'School': data.school.name,
+                        'Subclasses': data.subclasses.map((item) => item.name).join(',')
+                    }
+                    this.chosenItemParam = spell;
                 },
                 'classes': (data) => {
+                    console.log(data);
+                    let c = {
 
+                    }
+                    this.chosenItemParam = c;
                 },
                 'features': (data) => {
+                    console.log(data);
+                    let feature = {
 
+                    }
+                    this.chosenItemParam = feature;
                 }
             }
             fetch('https://www.dnd5eapi.co' + this.urls[index])
@@ -92,7 +117,12 @@ export default {
                 return res.json();
             })
             .then((data) => {
-                dataProcess['monsters'](data);
+                if(dataProcess.hasOwnProperty(this.chosenValue))
+                {
+                    dataProcess[this.chosenValue](data);
+                } else {
+                    console.log("No " + this.chosenValue + " process function");
+                }
             });
         }
     },
