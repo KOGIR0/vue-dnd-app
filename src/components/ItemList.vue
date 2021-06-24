@@ -6,7 +6,7 @@
                 class="list-item" 
                 v-for="(item, index) in data" :key="index" 
                 v-on:click="onItemClick ? onItemClick(index) : null; chosenIndex=index;"
-                :style="[index === chosenIndex ? { 'background': 'orange' } : 'null']">
+                :style="[index === chosenIndex ? { 'background': 'orange', 'color': 'black' } : 'null']">
                     {{ item }}
                 </div>
             </div>
