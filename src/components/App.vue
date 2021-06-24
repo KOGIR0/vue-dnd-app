@@ -32,8 +32,9 @@ export default {
     methods: {
         search(e){
             e.preventDefault();
+            console.log(this.$refs.form);
             let chosenInputValue = '';
-            for(let i = 0; i < 5; i++)
+            for(let i = 0; i < this.$refs.form.length - 1; i++)
             {
                 if(this.$refs.form[i].checked === true)
                 {
