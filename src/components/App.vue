@@ -18,7 +18,7 @@
 <script>
 "use strict";
 import ItemList from './ItemList.vue';
-import ObjectKeyList from './ObjectKeyList.vue';
+import ObjectList from './ObjectList.vue';
 
 export default {
     data(){
@@ -131,7 +131,7 @@ export default {
     },
     components: {
         'list': ItemList,
-        'chosenList': ObjectKeyList,
+        'chosenList': ObjectList,
     }
 };
 </script>
