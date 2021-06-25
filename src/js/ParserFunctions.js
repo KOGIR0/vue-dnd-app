@@ -55,9 +55,11 @@ function ParseClassJSON(data)
 
 function ParseFeatureJSON(data)
 {
-    console.log(data);
     return {
-
+        'Name': data.name,
+        'Description': data.desc.join(' '),
+        'Level': data.level,
+        'Prerequisites': data.prerequisites.join(', ')
     };
 }
 

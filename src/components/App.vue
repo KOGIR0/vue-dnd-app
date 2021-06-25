@@ -37,7 +37,6 @@ export default {
     methods: {
         search(e){
             e.preventDefault();
-            console.log(this.$refs.form);
             let chosenInputValue = '';
             for(let i = 0; i < this.$refs.form.length - 1; i++)
             {
@@ -82,7 +81,6 @@ export default {
         }
     },
     mounted: function() {
-        console.log("Component mounted");
     },
     components: {
         'list': ItemList,
