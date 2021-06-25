@@ -29,6 +29,7 @@ export default {
     watch: {
         dataDefault: function(newVal, oldVal) {
             this.data = newVal;
+            this.chosenIndex = '';
         }
     }
 }

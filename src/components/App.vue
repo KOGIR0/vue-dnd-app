@@ -65,6 +65,17 @@ function CreateSpellObj(data)
     }
 }
 
+function CreateClassObj(data)
+{
+    console.log(data);
+    return {
+        'Name': data.name,
+        'Hit die': data.hit_die,
+        'Proficiencies': data.proficiencies.map(item => item.name).join(', '),
+        'Subclasses': data.subclasses.map(item => item.name).join(', ')
+    }
+}
+
 export default {
     data(){
         return {
@@ -95,6 +106,7 @@ export default {
             .then((data) => {
                 this.names = data.results.map((item) => item.name);
                 this.urls = data.results.map((item) => item.url);
+                this.chosenItemParam = {};
             });
         },
         onItemClick(index)
@@ -109,10 +121,7 @@ export default {
                     this.chosenItemParam = spell;
                 },
                 'classes': (data) => {
-                    console.log(data);
-                    let c = {
-
-                    }
+                    let c = CreateClassObj(data);
                     this.chosenItemParam = c;
                 },
                 'features': (data) => {
