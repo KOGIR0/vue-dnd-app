@@ -42,7 +42,7 @@ function CreateMonsterObj(data)
         'Type': data.type,
         'Wisdom': data.wisdom,
         'XP': data.xp
-    }
+    };
 }
 
 function CreateSpellObj(data)
@@ -62,18 +62,25 @@ function CreateSpellObj(data)
         'Ritual': data.ritual.toString(),
         'School': data.school.name,
         'Subclasses': data.subclasses.map((item) => item.name).join(',')
-    }
+    };
 }
 
 function CreateClassObj(data)
 {
-    console.log(data);
     return {
         'Name': data.name,
         'Hit die': data.hit_die,
         'Proficiencies': data.proficiencies.map(item => item.name).join(', '),
         'Subclasses': data.subclasses.map(item => item.name).join(', ')
-    }
+    };
+}
+
+function CreateFeatureObj(data)
+{
+    console.log(data);
+    return {
+
+    };
 }
 
 export default {
@@ -112,24 +119,12 @@ export default {
         onItemClick(index)
         {
             let dataProcess = {
-                'monsters': (data) => {
-                    let monster = CreateMonsterObj(data);
-                    this.chosenItemParam = monster;
-                },
-                'spells': (data) => {
-                    let spell = CreateSpellObj(data);
-                    this.chosenItemParam = spell;
-                },
-                'classes': (data) => {
-                    let c = CreateClassObj(data);
-                    this.chosenItemParam = c;
-                },
+                'monsters': CreateMonsterObj,
+                'spells': CreateSpellObj,
+                'classes': CreateClassObj,
                 'features': (data) => {
                     console.log(data);
-                    let feature = {
-
-                    }
-                    this.chosenItemParam = feature;
+                    return CreateFeatureObj(data);
                 }
             }
             fetch('https://www.dnd5eapi.co' + this.urls[index])
@@ -139,7 +134,7 @@ export default {
             .then((data) => {
                 if(dataProcess.hasOwnProperty(this.chosenValue))
                 {
-                    dataProcess[this.chosenValue](data);
+                    this.chosenItemParam = dataProcess[this.chosenValue](data);
                 } else {
                     console.log("No " + this.chosenValue + " process function");
                 }
