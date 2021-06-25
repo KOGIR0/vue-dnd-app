@@ -20,7 +20,7 @@
 import ItemList from './ItemList.vue';
 import ObjectList from './ObjectList.vue';
 
-function CreateMonsterObj(data)
+function ParseMonsterJSON(data)
 {
     return {
         'Name': data.name,
@@ -45,7 +45,7 @@ function CreateMonsterObj(data)
     };
 }
 
-function CreateSpellObj(data)
+function ParseSpellJSON(data)
 {
     return {
         'Name': data.name,
@@ -65,7 +65,7 @@ function CreateSpellObj(data)
     };
 }
 
-function CreateClassObj(data)
+function ParseClassJSON(data)
 {
     return {
         'Name': data.name,
@@ -75,7 +75,15 @@ function CreateClassObj(data)
     };
 }
 
-function CreateFeatureObj(data)
+function ParseFeatureJSON(data)
+{
+    console.log(data);
+    return {
+
+    };
+}
+
+function ParseSkillJSON(data)
 {
     console.log(data);
     return {
@@ -119,13 +127,11 @@ export default {
         onItemClick(index)
         {
             let dataProcess = {
-                'monsters': CreateMonsterObj,
-                'spells': CreateSpellObj,
-                'classes': CreateClassObj,
-                'features': (data) => {
-                    console.log(data);
-                    return CreateFeatureObj(data);
-                }
+                'monsters': ParseMonsterJSON,
+                'spells': ParseSpellJSON,
+                'classes': ParseClassJSON,
+                'features': ParseFeatureJSON,
+                'skills': ParseSkillJSON,
             }
             fetch('https://www.dnd5eapi.co' + this.urls[index])
             .then((res) => {
