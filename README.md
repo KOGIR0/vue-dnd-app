@@ -10,5 +10,5 @@ to build production: npm build
 
 # TODO
 
-1. Add classes, features and spells process fuction
-2. Move dataProcess functions to seperate functions
+1. Add ParseSkillJSON fuction
+2. Add Styles to search form
