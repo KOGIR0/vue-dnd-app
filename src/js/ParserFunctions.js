@@ -65,9 +65,9 @@ function ParseFeatureJSON(data)
 
 function ParseSkillJSON(data)
 {
-    console.log(data);
     return {
-
+        'Name': data.name,
+        'Description': data.desc.join(' ')
     };
 }
 

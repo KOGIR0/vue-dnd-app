@@ -11,4 +11,3 @@ to build production: npm build
 # TODO
 
 1. Add ParseSkillJSON fuction
-2. Add Styles to search form
