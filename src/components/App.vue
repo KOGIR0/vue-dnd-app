@@ -1,12 +1,12 @@
 <template>
     <div id="app">
-        <form ref="form">
-            <input type="radio" name="group1" value="monsters"><label>Monsters</label>
-            <input type="radio" name="group1" value="spells"><label>Spells</label>
-            <input type="radio" name="group1" value="classes"><label>Classes</label>
-            <input type="radio" name="group1" value="features"><label>Features</label>
-            <input type="radio" name="group1" value="skills"><label>Skills</label>
-            <button v-on:click="search">Search</button>
+        <form ref="form" id="form">
+            <label><input class="input" type="radio" name="group1" value="monsters">Monsters</label>
+            <label><input class="input" type="radio" name="group1" value="spells">Spells</label>
+            <label><input class="input" type="radio" name="group1" value="classes">Classes</label>
+            <label><input class="input" type="radio" name="group1" value="features">Features</label>
+            <label><input class="input" type="radio" name="group1" value="skills">Skills</label>
+            <button v-on:click="search">Get Data</button>
         </form>
         <div class="row">
             <list v-bind:dataDefault="names" v-bind:onItemClick="onItemClick"></list>
@@ -89,15 +89,37 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 #app {
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
-    color: blue;
 }
 
 .row {
     display: flex;
     flex-direction: row;
+}
+
+#form
+{
+    @main-color: #00675C;
+    @btn-hover-color: #019485;
+
+    color: black;
+    display: flex;
+    flex-direction: column;
+    button
+    {
+        background-color: @main-color;
+        color: white;
+        border: 2px solid @main-color;
+        border-radius: 4px;
+        width: 100px;
+
+        &:hover
+        {
+            background-color: @btn-hover-color;
+        }
+    }
 }
 </style>

@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 .object-key-label {
     display: inline-block;
     background-color: #FFAA00;

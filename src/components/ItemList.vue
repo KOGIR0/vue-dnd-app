@@ -35,36 +35,44 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+    @main-color: #00675C;
+    @label-color: #A64600;
+    @chosen-item-color: #5DCFC3;
+
     .list-item {
         color: white;
-        background-color: #00675C;
+        background-color: @main-color;
         margin: 5px;
         padding: 5px;
+
+        &:hover
+        {
+            cursor: pointer;
+        }
     }
 
-    .chosen-item #name {
-        border-bottom: 2px solid black;
-    }
-
-    .list-item:hover {
-        cursor: pointer;
-    }
-
-    .chosen-item {
+    .chosen-item 
+    {
         color: black;
         display: flex;
         flex-direction: column;
         padding: 5px;
-        background-color: #5DCFC3;
+        background-color: @chosen-item-color;
         border-radius: 5px;
         width: 50%;
-    }
-    
-    .chosen-item label {
-        color: #A64600;
-        display: inline-block;
-        width: 45%;
+
+        #name
+        {
+            border-bottom: 2px solid black;
+        }
+        
+        label
+        {
+            color: @label-color;
+            display: inline-block;
+            width: 45%;
+        }
     }
 
     #row {
